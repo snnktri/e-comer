@@ -9,20 +9,21 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
     
         try {
             const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
-           // console.log("Token:", token);
+           //console.log("Token:", token);
 
             if(!token) {
                 throw new ApiError(401, "Unatuhtorized request.");
             }
-           // console.log("Hello i reach here.");
-           // console.log("Secret:", process.env.ACCESS_TOKEN_SECRET);
-            //try 
-              const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-            // } catch (error) {
-            //     console.error("JWT verification failed:", error);
-            //     throw new ApiError(401, error?.message || "Invalid access token.");
-            // }
-           // console.log("decoded token: ", decodedToken);
+           //console.log("Hello i reach here.");
+           //console.log("Secret:", process.env.ACCESS_TOKEN_SECRET);
+           let decodedToken;
+            try {
+              decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            } catch (error) {
+                console.error("JWT verification failed:", error);
+                throw new ApiError(401, error?.message || "Invalid access token.");
+            }
+           console.log("decoded token: ", decodedToken);
 
            const user = await User.findById(decodedToken?._id).select("-password -refreshToken");
            //console.log("user:", user);
