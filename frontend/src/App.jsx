@@ -8,6 +8,7 @@ import SignUp from './Pages/SignUp.jsx';
 import Cart from './Pages/Cart.jsx';
 import LogIn from './Pages/LogIn.jsx';
 import Order from './Pages/Order.jsx';
+import AdminDasBoard from './Pages/AdminDasBoard.jsx';
 
 const App = () => {
   const router = createBrowserRouter(
@@ -43,6 +44,10 @@ const App = () => {
           {
             path: "checkout",
             element: <Order />
+          },
+          {
+            path: "productManage",
+            element: <AdminDasBoard />
           }
           
         ]
