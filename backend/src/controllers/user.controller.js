@@ -37,7 +37,7 @@ const registerUser = asyncHandler( async (req, res) => {
     //check for ussr creattion
     //send response(return)
 
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
     //console.log(req.body);
 
 
@@ -46,6 +46,11 @@ const registerUser = asyncHandler( async (req, res) => {
     ) {
         throw new ApiError(400, "All fileds are required");
     }
+
+    if(role==="admin") {
+        throw new ApiError(400, "FOr new login, role can't be admin.");
+    }
+
 
    const existedUser = await User.findOne(
         {
@@ -60,7 +65,8 @@ const registerUser = asyncHandler( async (req, res) => {
     const user = await User.create({
         username,
         email,
-        password
+        password,
+        role
     })
 
     const createdUser = await User.findById(user._id).select(
@@ -86,7 +92,7 @@ const loginUser = asyncHandler( async (req, res) => {
     //access and refresh token
     //send to user this token as cookie (secure)
 
-    const { email, username, password } = req.body
+    const { email, username, password, role } = req.body
     console.log(req.body)
     if(!username && !email) {
         throw new ApiError(400, "Username or Email is required.");
@@ -168,9 +174,59 @@ const protectedController = asyncHandler (async (req, res) => {
     )
 })
 
+const adminLogin = asyncHandler(async (req, res) => {
+    const { email, username, password, role } = req.body
+    console.log(req.body)
+    if(!username && !email) {
+        throw new ApiError(400, "Username or Email is required.");
+    }
+
+    if(role !=="admin") {
+        throw new ApiError(400, "For admin login, role must be admin.");
+    }
+
+    const adminUser = await User.findOne({
+        $or: [ {email}, {username}]
+    });
+
+    if(!adminUser) {
+        throw new ApiError(404, "Admin user not found.");
+    }
+
+    const { accessToken, refreshToken } = await generateAccessAndRefreshToekn(adminUser._id);
+
+
+    const admin = await User.findById(adminUser.id).select("-password -refreshToken");
+    return res.status(200).
+    cookie("accessToken", accessToken).
+    cookie("refreshToken", refreshToken).
+    json(
+        new ApiResponse(200, { user: admin, accessToken, refreshToken }, "Admin is authenticated.")
+    )
+})
+
+const protectedAdmin = asyncHandler (async (req, res) => {
+    console.log(req.user);
+    if(!req.user) {
+        throw new ApiError(401, "User is not authenticated.");
+    }
+    console.log(req.user);
+
+    if(req.user.role!== "admin") {
+        throw new ApiError(403, "You are not authorized to access this page.");
+    }
+
+    console.log(req.user);
+
+    return res.status(200).json(
+        new ApiResponse(200, { user: req.user }, "User is authenticated.")
+    )
+})
 
 export { registerUser,
     loginUser,
     logoutUser,
-    protectedController
- }
+    protectedController,
+    protectedAdmin,
+adminLogin };
+ 
