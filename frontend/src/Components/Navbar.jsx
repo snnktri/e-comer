@@ -74,9 +74,9 @@ const Navbar = () => {
               <li>
                  <NavLink
                  to="/"
-                   className={({isAcitve}) =>
-                      `block py-2 pr-4 pl-3 duration-200 border-b ${isAcitve ? "text-orange-700": "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                      }
+                 className={({ isActive }) =>
+                  `block py-2 pr-4 pl-3 duration-200 border-b ${isActive ? "text-orange-700" : "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                }
                       >
                        Home
                     </NavLink>
@@ -84,9 +84,9 @@ const Navbar = () => {
                <li>
                  <NavLink
                  to="/contact"
-                   className={({isAcitve}) =>
-                      `block py-2 pr-4 pl-3 duration-200 border-b ${isAcitve ? "text-orange-700": "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                      }
+                 className={({ isActive }) =>
+                  `block py-2 pr-4 pl-3 duration-200 border-b ${isActive ? "text-orange-700" : "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                }
                       >
                        Contact
                     </NavLink>
@@ -94,27 +94,27 @@ const Navbar = () => {
                <li>
                  <NavLink
                  to="/about"
-                   className={({isAcitve}) =>
-                      `block py-2 pr-4 pl-3 duration-200 border-b ${isAcitve ? "text-orange-700": "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                      }
+                 className={({ isActive }) =>
+                  `block py-2 pr-4 pl-3 duration-200 border-b ${isActive ? "text-orange-700" : "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                }
                       >
                        About
                     </NavLink>
                </li>
-               {
-  admin ? (
-    <li>
-      <NavLink
-        to="/productManage"
-        className={({ isActive }) =>
-          `block py-2 pr-4 pl-3 duration-200 border-b ${isActive ? "text-orange-700" : "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-        }
-      >
-        Admin Panel
-      </NavLink>
-    </li>
-  ) : null
-}
+                              {
+                  admin ? (
+                    <li>
+                      <NavLink
+                        to="/productManage"
+                        className={({ isActive }) =>
+                          `block py-2 pr-4 pl-3 duration-200 border-b ${isActive ? "text-orange-700" : "text-gray-700"} border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                        }
+                      >
+                        Admin Panel
+                      </NavLink>
+                    </li>
+                  ) : null
+                }
 
             </ul>
         </div>
