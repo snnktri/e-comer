@@ -26,17 +26,11 @@ export const AdminAuthProvider = ({ children }) => {
                 if(response.data.suceess) {
                     setAdmin(response.data.data.user.username);
                 }
-                else {
-                    setAdmin(null);
-                    localStorage.removeItem("accessToken");
-                    console.log("Admin is not authenticated");
-                    return;
-                }
 
 
             } catch (error) {
                setAdmin(null);
-               localStorage.removeItem("accessToken");
+              
                 console.error("Error authenticating admin"+error.message);
                 
             }

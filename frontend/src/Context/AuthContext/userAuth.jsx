@@ -25,12 +25,7 @@ export const UserAuthProvider = ({ children }) => {
                 );
                // console.log("response:", response.data);
               // console.log("Response get finally");
-                if(!response.data.success) {
-                    setUser(null)
-                    
-                    localStorage.removeItem("accessToken");
-                    return ;
-                }
+               
               //  console.log("I want to reac here")
                // console.log("User: ", response.data.data.user.username);
                 setUser(response.data.data.user.username);
