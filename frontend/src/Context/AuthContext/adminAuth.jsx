@@ -21,11 +21,9 @@ export const AdminAuthProvider = ({ children }) => {
                                     }}
                                 );
 
-                console.log("response"+response);
+                console.log("response",response);
 
-                if(response.data.suceess) {
-                    setAdmin(response.data.data.user.username);
-                }
+                setAdmin(response.data.data.user.username);
 
 
             } catch (error) {

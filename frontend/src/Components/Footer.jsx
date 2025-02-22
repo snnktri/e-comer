@@ -15,8 +15,22 @@ export default function Footer() {
                             />
                         </Link>
                     </div>
+                    <div>
+                    <ul className="flex flex-wrap justify-center space-x-4">
+                        <li>
+                            <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about" className="text-gray-600 hover:text-gray-800">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
+                        </li>
+                    </ul>
+                </div>
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+               
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <span className="text-sm text-gray-500 sm:text-center">
                         © 2023
