@@ -34,14 +34,16 @@ const addProduct = asyncHandler( async (req, res) => {
 
     const filePath = req.file?.path;
 
+  //  console.log(filePath);
+
     if(!filePath) {
         throw new ApiError(404, "File not found.");
     }
 
-    console.log(filePath);
+   // console.log(filePath);
     const cloudinaryUrl = await uploadonCloudinary(filePath);
 
-    console.log(cloudinaryUrl);
+   // console.log(cloudinaryUrl);
 
     if(!cloudinaryUrl) {
         throw new ApiError(404, "Image url not found.");
