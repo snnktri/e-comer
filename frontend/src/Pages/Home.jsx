@@ -28,11 +28,11 @@ const Home = () => {
         <div className='flex w-full justify-center m-2'>
             <h2 className='m-2 text-white text-3xl'>Welcome to the e-commerece website.</h2>
         </div>
-        <div className='mt-2 w-full flex'>
+        <div className='mt-2 w-full flex justify-center'>
             {/* products goes here */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
   {products.map((product) => (
-    <div key={product._id} className="m-2">
+    <div key={product._id} className="m-2 p">
       <div className="bg-white p-4 rounded shadow-lg flex flex-col">
         <h2 className="text-green-600 text-lg font-semibold">{product.name}</h2>
         <img

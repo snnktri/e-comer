@@ -113,8 +113,8 @@ const Cart = () => {
 
       )}
       </div>
-      <div className='flex items-center justify-center'>
-        <Link to="/checkout">
+      <div className='flex items-center justify-center p-2'>
+        <Link to="/checkout" className='flex justify-center items-center bg-blue-500 p-5 w-[300px] rounded-xl hover:bg-blue-700 text-white text-xl capitalize'>
         checkOut
         </Link>
       </div>

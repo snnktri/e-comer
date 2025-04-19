@@ -70,7 +70,7 @@ const Order = () => {
     </div>
   
     {/* Order Form */}
-    <div className="min-w-full md:min-w-[30%]">
+    <div className="min-w-full md:min-w-[30%] flex flex-col items-center">
       <div className='mt-2'>Order Details: </div>
   <form onSubmit={handleSubmit} className="space-y-4">
     <div>
