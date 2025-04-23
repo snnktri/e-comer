@@ -50,10 +50,10 @@ const Home = () => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
   </Helmet>
-    <div className='bg-gray-700 w-full min-h-screen flex-col'>
+    <div className='bg-gray-300 w-full min-h-screen flex-col'>
       <div className='flex w-full items-center m-2 flex-col'>
-        <h2 className='m-2 text-white text-3xl block'>Welcome to the Watch-Wave</h2>
-        <p className='text-white text-lg italic block'>Where time meets style — discover your perfect match.</p>
+        <h2 className='m-2 text-gray-800 text-3xl block'>Welcome to the Watch-Wave</h2>
+        <p className='text-gray-700 text-lg italic block'>Where time meets style — discover your perfect match.</p>
       </div>
 
       <div className='mt-2 w-full flex justify-center'>
