@@ -48,26 +48,45 @@ const Order = () => {
         }
     }
   return (
-    <div className="container flex flex-col sm:flex-row gap-8 min-h-screen mt-4">
+    <div className="container flex flex-col sm:flex-row gap-8 min-h-screen mt-4 p-4">
     {/* Cart Items */}
-    <div className="grid grid-cols-2 sm:grid-cols-4 w-full items-center justify-around bg-gray-300">
-    {carts.items.map((item, index) => (
-  <div key={item.productId._id} className="flex items-center justify-center flex-col gap-1">
-    <div className="p-4 border border-gray-300 bg-gray-100 rounded-md shadow-2xl flex items-center justify-center flex-col">
-      <img
-        src={item.productId.productImage}
-        alt={item.productId.name}
-        className="w-[100px] h-[100px] object-cover rounded-md"
-      />
-      <h3 className="text-lg font-semibold">{item.productId.name}</h3>
-      <p className="text-sm">Price: {item.productId.price}</p>
-      <p className="text-sm">Quantity: {item.quantity}</p>
-      <h2 className="text-xl font-semibold">Total Price: {item.productId.price * item.quantity}</h2>
-    </div>
-  </div>
-))}
+    <div className="flex flex-col w-full items-center justify-center bg-gray-300 p-4 space-y-6">
+  {carts.items.map((item, index) => (
+    <div key={item.productId._id} className="flex w-full justify-center sm:p-4">
+      <div className="w-full max-w-lg p-6 bg-white border border-gray-300 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        
+        {/* Product Image */}
+        <img
+          src={item.productId.productImage}
+          alt={item.productId.name}
+          className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 object-cover rounded-md mx-auto"
+        />
 
+        {/* Product Name */}
+        <h3 className="mt-4 text-xl font-semibold text-gray-800 text-center">{item.productId.name}</h3>
+
+        {/* Price and Quantity */}
+        <div className="mt-2 text-center space-y-1">
+          <p className="text-sm text-gray-600">Price: <span className="font-bold">${item.productId.price.toFixed(2)}</span></p>
+          <p className="text-sm text-gray-600">Quantity: <span className="font-bold">{item.quantity}</span></p>
+        </div>
+
+        {/* Total Price */}
+        <h2 className="mt-4 text-2xl font-semibold text-green-600 text-center">
+          Total Price: <span className="text-xl font-bold">${(item.productId.price * item.quantity).toFixed(2)}</span>
+        </h2>
+
+        {/* Optionally, Add to Cart Button */}
+        <div className="mt-6 flex justify-center">
+          <button className="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-200">
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
+  ))}
+</div>
+
   
     {/* Order Form */}
     <div className="min-w-full md:min-w-[30%] flex flex-col items-center">

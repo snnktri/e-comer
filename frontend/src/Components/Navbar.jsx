@@ -28,7 +28,7 @@ const Navbar = () => {
           <img className="mr-3 h-16" src="Images/logo1.png" alt="Logo" />
           </Link>
           <Link to="/" className='ml-4 text-xl text-gray-800 hover:text-gray-900'>
-            E-Commerce
+            Watch-Wave
           </Link>
         </div>
         <div className='flex items-center lg:order-2'>

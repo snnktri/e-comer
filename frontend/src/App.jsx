@@ -13,6 +13,7 @@ import SuccessPage from './Pages/SuccessPage.jsx';
 import AdminPannel from './Pages/AdminPannel.jsx';
 import SearchItem from './Pages/SearchItem.jsx';
 import AddProduct from './Pages/AddProduct.jsx';
+import Items from './Pages/Items.jsx';
 
 const App = () => {
   const router = createBrowserRouter(
@@ -53,6 +54,10 @@ const App = () => {
           {
             path: "success",
             element: <SuccessPage />
+          },
+          {
+            path: 'productPage',
+            element: <Items />
           },
           {
             path: "admin",
